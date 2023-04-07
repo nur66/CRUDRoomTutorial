@@ -1,5 +1,6 @@
 package com.example.crudroomtutorial.adapter
 
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,18 @@ import com.example.crudroomtutorial.data.entity.User
 class UserAdapter(
     var list: List<User>
 ) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    private lateinit var dialog: Dialog
+
+    fun setDialog(dialog: Dialog){
+        this.dialog = dialog
+    }
+
+    interface Dialog {
+        fun onClick(position: Int)
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var fullName: TextView
         var email: TextView
         var phone: TextView
@@ -20,6 +32,9 @@ class UserAdapter(
             fullName = view.findViewById(R.id.full_name)
             email = view.findViewById(R.id.email)
             phone = view.findViewById(R.id.phone)
+            view.setOnClickListener{
+                dialog.onClick(layoutPosition)
+            }
         }
     }
 

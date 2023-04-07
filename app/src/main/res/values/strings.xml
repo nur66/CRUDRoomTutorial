@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">CRUD Room Tutorial</string>
+    <string name="app_name">Kontak Penting</string>
+    <string-array name="item_option">
+        <item>Ubah</item>
+        <item>Hapus</item>
+        <item>Kembali</item>
+    </string-array>
 </resources>
